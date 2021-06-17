@@ -1,4 +1,4 @@
-#include "Func.h"
+ï»¿#include "Func.h"
 
 
 MyArray operator+(int n, const MyArray& obj)
@@ -29,7 +29,7 @@ ostream& operator<<(ostream& out, const MyArray& obj)
 
 istream& operator>>(istream& in, const MyArray& obj)
 {
-	cout << "Ââåäèòå çíà÷åíèÿ äëÿ íîâîãî ìàññèâà êîëè÷åñòâîì " << obj.size << " ýëåìåíòîâ: ";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ Ð´Ð»Ñ Ð½Ð¾Ð²Ð¾Ð³Ð¾ Ð¼Ð°ÑÑÐ¸Ð²Ð° ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾Ð¼ " << obj.size << " ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð²: ";
 
 	for (size_t i = 0; i < obj.size; i++)
 	{

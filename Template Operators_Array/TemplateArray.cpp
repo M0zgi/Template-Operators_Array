@@ -1,4 +1,4 @@
-#include "TemplateArray.h"
+ï»¿#include "TemplateArray.h"
 
 MyArray::MyArray(int s)
 {
@@ -169,7 +169,7 @@ int MyArray::operator[](int index) const
 {
 	if (index < 0 || index >= size)
 	{
-		cout << "Óêàçàííîãî èíäåêñà íåò â ìàññèâå: ";
+		cout << "Ð£ÐºÐ°Ð·Ð°Ð½Ð½Ð¾Ð³Ð¾ Ð¸Ð½Ð´ÐµÐºÑÐ° Ð½ÐµÑ‚ Ð² Ð¼Ð°ÑÑÐ¸Ð²Ðµ: ";
 
 		return index;
 	}
@@ -182,7 +182,7 @@ int& MyArray::operator[](int index)
 {
 	if (index < 0 || index >= size)
 	{
-		cout << "Óêàçàííîãî èíäåêñà íåò â ìàññèâå: ";
+		cout << "Ð£ÐºÐ°Ð·Ð°Ð½Ð½Ð¾Ð³Ð¾ Ð¸Ð½Ð´ÐµÐºÑÐ° Ð½ÐµÑ‚ Ð² Ð¼Ð°ÑÑÐ¸Ð²Ðµ: ";
 
 		return index;
 	}
@@ -269,7 +269,7 @@ MyArray& MyArray::operator*(const MyArray& obj)
 
 	result = new MyArray(countsize);
 
-	//ïîëó÷èëè ìàññèâ ñ óíèêàëüíûìè ýëåìåíòàìè
+	//Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ð»Ð¸ Ð¼Ð°ÑÑÐ¸Ð² Ñ ÑƒÐ½Ð¸ÐºÐ°Ð»ÑŒÐ½Ñ‹Ð¼Ð¸ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°Ð¼Ð¸
 	for (size_t i = 0; i < countsize; i++)
 	{
 		(*result)[i] = (*temp)[i];
@@ -356,7 +356,7 @@ MyArray& MyArray::operator%(const MyArray& obj)
 
 	result = new MyArray(countsize);
 
-	//ïîëó÷èëè ìàññèâ ñ óíèêàëüíûìè ýëåìåíòàìè
+	//Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ð»Ð¸ Ð¼Ð°ÑÑÐ¸Ð² Ñ ÑƒÐ½Ð¸ÐºÐ°Ð»ÑŒÐ½Ñ‹Ð¼Ð¸ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°Ð¼Ð¸
 	for (size_t i = 0; i < countsize; i++)
 	{
 		(*result)[i] = (*temp)[i];
