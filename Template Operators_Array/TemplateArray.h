@@ -457,18 +457,25 @@ MyArray<T> MyArray<T>::operator%(const MyArray<T>& obj)
 		key = 0;
 	}
 
-
-	MyArray<T>* result = nullptr;
-
-	result = new MyArray<T>(countsize);
-
-	//получили массив с уникальными элементами
+	MyArray<T> result = MyArray<T>(countsize);
 	for (size_t i = 0; i < countsize; i++)
 	{
-		(*result)[i] = temp.array[i];
+		result.array[i] = temp.array[i];
 	}
 
-	return *result;
+	return result;
+
+	//MyArray<T>* result = nullptr;
+
+	//result = new MyArray<T>(countsize);
+
+	////получили массив с уникальными элементами
+	//for (size_t i = 0; i < countsize; i++)
+	//{
+	//	(*result)[i] = temp.array[i];
+	//}
+
+	//return *result;
 }
 
 template<class T>
