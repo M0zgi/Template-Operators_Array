@@ -3,7 +3,7 @@
 #include<iostream>
 #include <Windows.h>
 #include<string>
-//#include<typeinfo>
+#include<typeinfo>
 
 using namespace std;
 
@@ -35,6 +35,9 @@ public:
 
 	//оператор Array + Array
 	MyArray operator + (const MyArray& obj);
+
+	//оператор Array + Array
+	MyArray operator += (const MyArray& obj);
 
 	//оператор равенства ==
 	bool operator == (const MyArray& obj);
@@ -172,6 +175,56 @@ MyArray<T> MyArray<T>::operator+(const MyArray<T>& obj)
 	}
 
 	return temp;
+}
+
+template<class T>
+inline MyArray<T> MyArray<T>::operator+=(const MyArray<T>& obj)
+{
+	if (size >= obj.size)
+	{		
+		for (size_t i = 0; i < obj.size; i++)
+		{
+			array[i] = array[i] + obj.array[i];
+		}
+
+		return *this;
+	}
+		
+	/*else
+	{
+		MyArray<T> temp = MyArray<T>(obj.size);
+
+		for (size_t i = 0; i < size; i++)
+		{
+			temp.array[i] = array[i] + obj.array[i];
+
+			cout << temp.array[i] << " ";
+		}
+		cout << endl;
+		for (size_t i = 0; i < obj.size; i++)
+		{
+			temp.array[size + i] = obj.array[size + i];
+			cout << temp.array[i] << " ";
+		}
+		cout << endl;
+		if (array != nullptr)
+			delete[]array;
+
+		size = obj.size;
+		array = new T (size);
+
+		
+		for (size_t i = 0; i < size; i++)
+		{
+			array[i] = temp.array[i];
+
+			cout << array[i] << " ";
+		}
+		
+		return *this;
+
+	}*/
+	
 }
 
 template<class T>
