@@ -37,7 +37,7 @@ public:
 	MyArray operator + (const MyArray& obj);
 
 	//оператор Array + Array
-	MyArray operator += (const MyArray& obj);
+	void operator += (const MyArray& obj);
 
 	//оператор равенства ==
 	bool operator == (const MyArray& obj);
@@ -177,8 +177,10 @@ MyArray<T> MyArray<T>::operator+(const MyArray<T>& obj)
 	return temp;
 }
 
+
+
 template<class T>
-inline MyArray<T> MyArray<T>::operator+=(const MyArray<T>& obj)
+inline void MyArray<T>::operator+=(const MyArray<T>& obj)
 {
 	if (size >= obj.size)
 	{		
@@ -187,10 +189,9 @@ inline MyArray<T> MyArray<T>::operator+=(const MyArray<T>& obj)
 			array[i] = array[i] + obj.array[i];
 		}
 
-		return *this;
 	}
 		
-	/*else
+	else
 	{
 		MyArray<T> temp = MyArray<T>(obj.size);
 
@@ -212,18 +213,15 @@ inline MyArray<T> MyArray<T>::operator+=(const MyArray<T>& obj)
 
 		size = obj.size;
 		array = new T (size);
-
 		
+
 		for (size_t i = 0; i < size; i++)
 		{
 			array[i] = temp.array[i];
-
 			cout << array[i] << " ";
 		}
-		
-		return *this;
 
-	}*/
+	}
 	
 }
 
