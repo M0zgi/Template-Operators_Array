@@ -34,7 +34,7 @@ public:
 	MyArray operator + (T n);
 
 	//оператор Array + Array
-	MyArray& operator + (const MyArray& obj);
+	MyArray operator + (const MyArray& obj);
 
 	//оператор равенства ==
 	bool operator == (const MyArray& obj);
@@ -55,10 +55,10 @@ public:
 	T& operator [] (int index);
 
 	//оператор Array * Array создаем массив с общими уникальнми элементами двух массивов
-	MyArray& operator * (const MyArray& obj);
+	MyArray operator * (const MyArray& obj);
 
 	//оператор Array % Array создаем массив с уникальнми отличительными элементами двух массивов
-	MyArray& operator % (const MyArray& obj);
+	MyArray operator % (const MyArray& obj);
 
 	
 
@@ -160,26 +160,24 @@ MyArray<T> MyArray<T>::operator+(T n)
 
 	return *this;*/
 
-	int tempsize = size + 1;
+	
 
-	MyArray<T>* temp = nullptr;
-
-	temp = new MyArray<T>(tempsize);
+	MyArray<T> temp = MyArray<T>(size + 1);
 
 	for (size_t i = 0; i < size; i++)
 	{
-		(*temp)[i] = array[i];
+		temp.array[i] = array[i];
 	}
 
-	(*temp)[size] = n;
+	temp.array[size] = n;
 
-	return *temp;
+	return temp;
 }
 
 template<class T>
-MyArray<T>& MyArray<T>::operator+(const MyArray<T>& obj)
+MyArray<T> MyArray<T>::operator+(const MyArray<T>& obj)
 {
-	int tempsize = size + obj.size;
+	/*int tempsize = size + obj.size;
 
 	MyArray<T>* temp = nullptr;
 
@@ -195,7 +193,21 @@ MyArray<T>& MyArray<T>::operator+(const MyArray<T>& obj)
 		(*temp)[size + i] = obj.array[i];
 	}
 
-	return *temp;
+	return *temp;*/
+
+	MyArray<T> temp = MyArray<T>(size + obj.size);
+
+	for (size_t i = 0; i < size; i++)
+	{
+		temp.array[i] = array[i];
+	}
+
+	for (size_t i = 0; i < obj.size; i++)
+	{
+		temp.array[size + i] = obj.array[i];
+	}
+
+	return temp;
 }
 
 template<class T>
@@ -271,7 +283,7 @@ T MyArray<T>::operator[](int index) const
 {
 	if (index < 0 || index >= size)
 	{
-		cout << "Указанного индекса нет в массиве: ";
+		cout << "Указанного индекса нет в массиве: " << index;
 
 		return index;
 	}
@@ -285,7 +297,7 @@ T& MyArray<T>::operator[](int index)
 {
 	if (index < 0 || index >= size)
 	{
-		cout << "Указанного индекса нет в массиве: ";
+		cout << "Указанного индекса нет в массиве: " << index;
 
 		return index;
 	}
@@ -295,15 +307,11 @@ T& MyArray<T>::operator[](int index)
 }
 
 template<class T>
-MyArray<T>& MyArray<T>::operator*(const MyArray<T>& obj)
+MyArray<T> MyArray<T>::operator*(const MyArray<T>& obj)
 {
-	int tempsize = size + obj.size;
-
 	int count = 0, countsize = 0, key = 0;
 
-	MyArray<T>* temp = nullptr;
-
-	temp = new MyArray<T>(tempsize);
+	MyArray<T> temp = MyArray<T>(size + obj.size);
 
 	for (size_t i = 0; i < size; i++)
 	{
@@ -319,7 +327,7 @@ MyArray<T>& MyArray<T>::operator*(const MyArray<T>& obj)
 
 				for (size_t k = 0; k < countsize; k++)
 				{
-					if (array[i] == (*temp)[k])
+					if (array[i] == temp.array[k])
 					{
 						key++;
 					}
@@ -327,7 +335,7 @@ MyArray<T>& MyArray<T>::operator*(const MyArray<T>& obj)
 
 				if (key == 0)
 				{
-					(*temp)[countsize] = array[i];
+					temp.array[countsize] = array[i];
 					countsize++;
 				}
 			}
@@ -350,7 +358,7 @@ MyArray<T>& MyArray<T>::operator*(const MyArray<T>& obj)
 			{
 				for (size_t k = 0; k < countsize; k++)
 				{
-					if (obj.array[i] == (*temp)[k])
+					if (obj.array[i] == temp.array[k])
 					{
 						key++;
 					}
@@ -358,7 +366,7 @@ MyArray<T>& MyArray<T>::operator*(const MyArray<T>& obj)
 
 				if (key == 0)
 				{
-					(*temp)[countsize] = obj.array[i];
+					temp.array[countsize] = obj.array[i];
 					countsize++;
 				}
 			}
@@ -368,30 +376,23 @@ MyArray<T>& MyArray<T>::operator*(const MyArray<T>& obj)
 		key = 0;
 	}
 
-
-	MyArray<T>* result = nullptr;
-
-	result = new MyArray<T>(countsize);
-
-	//получили массив с уникальными элементами
+	MyArray<T> result = MyArray<T>(countsize);
 	for (size_t i = 0; i < countsize; i++)
 	{
-		(*result)[i] = (*temp)[i];
+		result.array[i] = temp.array[i];
 	}
 
-	return *result;
+	return result;
+
 }
 
 template<class T>
-MyArray<T>& MyArray<T>::operator%(const MyArray<T>& obj)
+MyArray<T> MyArray<T>::operator%(const MyArray<T>& obj)
 {
-	int tempsize = size + obj.size;
 
 	int count = 0, countsize = 0, key = 0;
 
-	MyArray<T>* temp = nullptr;
-
-	temp = new MyArray<T>(tempsize);
+	MyArray<T> temp = MyArray<T>(size + obj.size);
 
 	for (size_t i = 0; i < size; i++)
 	{
@@ -407,7 +408,7 @@ MyArray<T>& MyArray<T>::operator%(const MyArray<T>& obj)
 
 				for (size_t k = 0; k < countsize; k++)
 				{
-					if (array[i] == (*temp)[k])
+					if (array[i] == temp.array[k])
 					{
 						key++;
 					}
@@ -415,7 +416,7 @@ MyArray<T>& MyArray<T>::operator%(const MyArray<T>& obj)
 
 				if (key == 0)
 				{
-					(*temp)[countsize] = array[i];
+					temp.array[countsize] = array[i];
 					countsize++;
 				}
 			}
@@ -438,7 +439,7 @@ MyArray<T>& MyArray<T>::operator%(const MyArray<T>& obj)
 			{
 				for (size_t k = 0; k < countsize; k++)
 				{
-					if (obj.array[i] == (*temp)[k])
+					if (obj.array[i] == temp.array[k])
 					{
 						key++;
 					}
@@ -446,7 +447,7 @@ MyArray<T>& MyArray<T>::operator%(const MyArray<T>& obj)
 
 				if (key == 0)
 				{
-					(*temp)[countsize] = obj.array[i];
+					temp.array[countsize] = obj.array[i];
 					countsize++;
 				}
 			}
@@ -464,7 +465,7 @@ MyArray<T>& MyArray<T>::operator%(const MyArray<T>& obj)
 	//получили массив с уникальными элементами
 	for (size_t i = 0; i < countsize; i++)
 	{
-		(*result)[i] = (*temp)[i];
+		(*result)[i] = temp.array[i];
 	}
 
 	return *result;
@@ -496,39 +497,15 @@ void MyArray<T>::print() const
 template<class T>
 void MyArray<T>::FillArrayNoSrand()
 {
-	//for (size_t i = 0; i < size; i++)
-	//{
-	//	//array[i] = rand() % 10;
-
-	//	if (typeid(T).name() == (string)"int")
-	//		array[i] = rand() % 100;
-	//	if (typeid(T).name() == (string)"float")
-	//		array[i] = (rand() % 1000) / 10.;
-	//}
-
-	if (sizeof(T) == sizeof(int))
+	for (size_t i = 0; i < size; i++)
 	{
-		for (size_t i = 0; i < size; i++)
-		{
-			array[i] = rand() % 10;
-		}
-	}
-
-	else if (sizeof(T) == sizeof(double) || sizeof(T) == sizeof(float))
-	{
-		for (size_t i = 0; i < size; i++)
-		{
-			array[i] = rand() % 10 * 1.1;
-		}
-	}
-
-	else if (sizeof(T) == sizeof(char))
-	{
-		for (size_t i = 0; i < size; i++)
-		{
+		if (typeid(T).name() == (string)"int")
+			array[i] = rand() % 100;
+		if (typeid(T).name() == (string)"float" || typeid(T).name() == (string)"double")
+			array[i] = (rand() % 1000) / 10.;
+		if (typeid(T).name() == (string)"char")
 			array[i] = ('a' + rand() % ('z' - 'a'));
-		}
-	}
+	}	
 }
 
 //дружественная функция перегрузка оператора + (int + Array) добавляет значение в начало массива

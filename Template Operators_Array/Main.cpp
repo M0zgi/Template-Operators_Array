@@ -36,6 +36,11 @@ int main()
 	q.FillArrayNoSrand();
 	q.print();
 
+	cout << "Массив o: ";
+	MyArray<int> o(20);
+	o.FillArrayNoSrand();
+	o.print();
+
 	cout << "Массив u: ";
 	MyArray<double> u(10);
 	u.FillArrayNoSrand();
@@ -93,10 +98,18 @@ int main()
 	a.print();
 	cout << "Массив b: ";
 	b.print();
+	cout << endl;
+	cout << "Перегрузка оператора сложения CHAR Array l = Array k + char (добавление знака в конец массива) l = k + R\nМассив l: ";
+
+	l = k + 'R';
+
+	l.print();
+	cout << "Массив k: ";
+	k.print();
 
 	cout << "\n--------------------------------------\n";
 
-	/*cout << "Создание массива Array u3 = Array u + Array u2 \n";
+	cout << "Создание массива DOUBLE Array u3 = Array u + Array u2 \n";
 	cout << "Массив u: ";
 	u.print();
 
@@ -109,9 +122,9 @@ int main()
 	cout << "Массив u3: ";
 	u3.print();
 
-	cout << "\n--------------------------------------\n";*/
+	cout << "\n--------------------------------------\n";
 
-	/*cout << "Создание массива CHAR Array kl = Array k + Array l \n";
+	cout << "Создание массива CHAR Array kl = Array k + Array l \n";
 	cout << "Массив k: ";
 	k.print();
 
@@ -124,10 +137,10 @@ int main()
 	cout << "Массив kl: ";
 	kl.print();
 
-	cout << "\n--------------------------------------\n";*/
+	cout << "\n--------------------------------------\n";
 
 
-	cout << "Создание массива Array e = Array a + Array c \n";
+	cout << "Создание массива INT Array e = Array a + Array c \n";
 	cout << "Массив а: ";
 	a.print();
 
@@ -165,6 +178,29 @@ int main()
 	result = d == c;
 	cout << result << endl;
 
+	cout << endl;
+
+	cout << "k: " << k  << "l: " << l;
+
+	cout << "Сравнение на равенство массива k с массивом l: ";
+
+	
+	result = k == l;
+	cout << result << endl;
+
+	cout << "Перегрузка оператора присваивания k = l\nМассив k: ";
+
+	k = l;
+	k.print();
+
+	cout << "Массив l: ";
+	l.print();
+
+	cout << "Сравнение на равенство массива k с массивом l: ";
+
+	result = k == l;
+	cout << result << endl;
+
 	cout << "\n--------------------------------------\n";
 
 	cout << "Массив а: ";
@@ -193,8 +229,8 @@ int main()
 	cout << a[9] << endl;
 
 	cout << "Получение значения массива по несуществующему индексу a[30]\n";
-	cout << a[30] << endl;
-
+	 a[30] ;
+	 cout << endl;
 	cout << "Изменение значения массива по существующему индексу a[0] = 100\n";
 
 	a[0] = 100;
@@ -207,6 +243,12 @@ int main()
 	cout << endl;
 	cout << "Массив а: ";
 	a.print();
+
+	/*cout << "Изменение значения массива по существующему индексу k[1] = Z\n";
+
+	k[1] = 'Z';
+	cout << "Массив k: ";
+	cout << k;*/
 
 	cout << "\n--------------------------------------\n";
 
@@ -242,7 +284,7 @@ int main()
 
 	cout << "\n--------------------------------------\n";
 
-	cout << "Создаем массив с отличительными уникальными (неповторяющимися) элементами двух массивов \n";
+	cout << "Создаем массив INT с отличительными уникальными (неповторяющимися) элементами двух массивов \n";
 	cout << "Массив а: ";
 	a.print();
 
@@ -257,22 +299,39 @@ int main()
 
 	cout << "\n--------------------------------------\n";
 
-	cout << "Создаем массив с общими уникальными (неповторяющимися) элементами двух массивов \n";
+	cout << "Создаем массив INT с общими уникальными (неповторяющимися) элементами двух массивов \n";
 
 	MyArray<int> g(20);
 	g.FillArrayNoSrand();
 
-	cout << "Массив а: ";
-	a.print();
+	cout << "Массив o: ";
+	o.print();
 
 	cout << "Массив g: ";
 	g.print();
 
-	MyArray<int> h(a.GetSize() + g.GetSize());
-	h = a * g;
+	MyArray<int> h(o.GetSize() + g.GetSize());
+	h = o * g;
 
 	cout << "Массив h: ";
 	h.print();
+
+	cout << "Создаем массив CHAR с общими уникальными (неповторяющимися) элементами двух массивов \n";
+
+	MyArray<char> kl1(20);
+	kl1.FillArrayNoSrand();
+
+	cout << "Массив kl: ";
+	kl1.print();
+
+	cout << "Массив k: ";
+	k.print();
+
+	MyArray<char> kl3(kl1.GetSize() + k.GetSize());
+	kl3 = kl1 * k;
+
+	cout << "Массив kl3: ";
+	kl3.print();
 
 
 	cout << "\n--------------------------------------\n";
@@ -283,9 +342,9 @@ int main()
 
 	cout << "\n--------------------------------------\n";
 
-	cout << "Перегрузка оператора >> \n";
+	cout << "Перегрузка оператора CHAR >> \n";
 
-	MyArray<int> x(3);
+	MyArray<char> x(3);
 
 	cin >> x;
 
