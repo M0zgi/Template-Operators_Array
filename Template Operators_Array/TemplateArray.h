@@ -143,25 +143,6 @@ MyArray<T>& MyArray<T>::operator=(const MyArray<T>& obj)
 template<class T>
 MyArray<T> MyArray<T>::operator+(T n)
 {
-	/*int *temp = new int[size + 1];
-
-	for (size_t i = 0; i < size; i++)
-	{
-		temp[i] = array[i];
-	}
-
-	temp[size] = n;
-
-	delete[]array;
-
-	size++;
-
-	array = temp;
-
-	return *this;*/
-
-	
-
 	MyArray<T> temp = MyArray<T>(size + 1);
 
 	for (size_t i = 0; i < size; i++)
@@ -177,23 +158,6 @@ MyArray<T> MyArray<T>::operator+(T n)
 template<class T>
 MyArray<T> MyArray<T>::operator+(const MyArray<T>& obj)
 {
-	/*int tempsize = size + obj.size;
-
-	MyArray<T>* temp = nullptr;
-
-	temp = new MyArray<T>(tempsize);
-
-	for (size_t i = 0; i < size; i++)
-	{
-		(*temp)[i] = array[i];
-	}
-
-	for (size_t i = 0; i < obj.size; i++)
-	{
-		(*temp)[size + i] = obj.array[i];
-	}
-
-	return *temp;*/
 
 	MyArray<T> temp = MyArray<T>(size + obj.size);
 
@@ -464,18 +428,6 @@ MyArray<T> MyArray<T>::operator%(const MyArray<T>& obj)
 	}
 
 	return result;
-
-	//MyArray<T>* result = nullptr;
-
-	//result = new MyArray<T>(countsize);
-
-	////получили массив с уникальными элементами
-	//for (size_t i = 0; i < countsize; i++)
-	//{
-	//	(*result)[i] = temp.array[i];
-	//}
-
-	//return *result;
 }
 
 template<class T>

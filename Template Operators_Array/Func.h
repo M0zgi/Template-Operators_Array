@@ -1,13 +1,13 @@
-﻿//для массива int (код без шаблона)
-
-//#pragma once
+﻿//#pragma once
 //#include"TemplateArray.h"
 //
-////дружественная функция перегрузка оператора + (int + Array) добавляет значение в начало массива
-//MyArray operator+(int n, const MyArray& obj);
+//template<class T>
+//MyArray<T> operator+(T n, const MyArray<T>& obj);
 //
 ////дружественная функция перегрузка cout
-//ostream& operator << (ostream& out, const MyArray& obj);
+//template<class T>
+//ostream& operator << (ostream& out, const MyArray<T>& obj);
 //
 ////дружественная функция перегрузка cin
-//istream& operator >> (istream& in, const MyArray& obj);
+//template<class T>
+//istream& operator >> (istream& in, const MyArray<T>& obj);

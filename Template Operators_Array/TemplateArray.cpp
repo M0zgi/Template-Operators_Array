@@ -1,5 +1,5 @@
-﻿////для массива int (код без шаблона)
-//
+﻿//#include"TemplateArray.h"
+
 //template<class T>
 //MyArray<T>::MyArray(int s)
 //{
@@ -52,59 +52,35 @@
 //template<class T>
 //MyArray<T> MyArray<T>::operator+(T n)
 //{
-//	/*int *temp = new int[size + 1];
+//	MyArray<T> temp = MyArray<T>(size + 1);
 //
 //	for (size_t i = 0; i < size; i++)
 //	{
-//		temp[i] = array[i];
+//		temp.array[i] = array[i];
 //	}
 //
-//	temp[size] = n;
+//	temp.array[size] = n;
 //
-//	delete[]array;
-//
-//	size++;
-//
-//	array = temp;
-//
-//	return *this;*/
-//
-//	int tempsize = size + 1;
-//
-//	MyArray<T>* temp = nullptr;
-//
-//	temp = new MyArray<T>(tempsize);
-//
-//	for (size_t i = 0; i < size; i++)
-//	{
-//		(*temp)[i] = array[i];
-//	}
-//
-//	(*temp)[size] = n;
-//
-//	return *temp;
+//	return temp;
 //}
 //
 //template<class T>
-//MyArray<T>& MyArray<T>::operator+(const MyArray<T>& obj)
+//MyArray<T> MyArray<T>::operator+(const MyArray<T>& obj)
 //{
-//	int tempsize = size + obj.size;
 //
-//	MyArray<T>* temp = nullptr;
-//
-//	temp = new MyArray<T>(tempsize);
+//	MyArray<T> temp = MyArray<T>(size + obj.size);
 //
 //	for (size_t i = 0; i < size; i++)
 //	{
-//		(*temp)[i] = array[i];
+//		temp.array[i] = array[i];
 //	}
 //
 //	for (size_t i = 0; i < obj.size; i++)
 //	{
-//		(*temp)[size + i] = obj.array[i];
+//		temp.array[size + i] = obj.array[i];
 //	}
 //
-//	return *temp;
+//	return temp;
 //}
 //
 //template<class T>
@@ -180,7 +156,7 @@
 //{
 //	if (index < 0 || index >= size)
 //	{
-//		cout << "Указанного индекса нет в массиве: ";
+//		cout << "Указанного индекса нет в массиве: " << index;
 //
 //		return index;
 //	}
@@ -194,7 +170,7 @@
 //{
 //	if (index < 0 || index >= size)
 //	{
-//		cout << "Указанного индекса нет в массиве: ";
+//		cout << "Указанного индекса нет в массиве: " << index;
 //
 //		return index;
 //	}
@@ -204,15 +180,11 @@
 //}
 //
 //template<class T>
-//MyArray<T>& MyArray<T>::operator*(const MyArray<T>& obj)
+//MyArray<T> MyArray<T>::operator*(const MyArray<T>& obj)
 //{
-//	int tempsize = size + obj.size;
-//
 //	int count = 0, countsize = 0, key = 0;
 //
-//	MyArray<T>* temp = nullptr;
-//
-//	temp = new MyArray<T>(tempsize);
+//	MyArray<T> temp = MyArray<T>(size + obj.size);
 //
 //	for (size_t i = 0; i < size; i++)
 //	{
@@ -228,7 +200,7 @@
 //
 //				for (size_t k = 0; k < countsize; k++)
 //				{
-//					if (array[i] == (*temp)[k])
+//					if (array[i] == temp.array[k])
 //					{
 //						key++;
 //					}
@@ -236,7 +208,7 @@
 //
 //				if (key == 0)
 //				{
-//					(*temp)[countsize] = array[i];
+//					temp.array[countsize] = array[i];
 //					countsize++;
 //				}
 //			}
@@ -259,7 +231,7 @@
 //			{
 //				for (size_t k = 0; k < countsize; k++)
 //				{
-//					if (obj.array[i] == (*temp)[k])
+//					if (obj.array[i] == temp.array[k])
 //					{
 //						key++;
 //					}
@@ -267,7 +239,7 @@
 //
 //				if (key == 0)
 //				{
-//					(*temp)[countsize] = obj.array[i];
+//					temp.array[countsize] = obj.array[i];
 //					countsize++;
 //				}
 //			}
@@ -277,30 +249,23 @@
 //		key = 0;
 //	}
 //
-//
-//	MyArray<T>* result = nullptr;
-//
-//	result = new MyArray<T>(countsize);
-//
-//	//получили массив с уникальными элементами
+//	MyArray<T> result = MyArray<T>(countsize);
 //	for (size_t i = 0; i < countsize; i++)
 //	{
-//		(*result)[i] = (*temp)[i];
+//		result.array[i] = temp.array[i];
 //	}
 //
-//	return *result;
+//	return result;
+//
 //}
 //
 //template<class T>
-//MyArray<T>& MyArray<T>::operator%(const MyArray<T>& obj)
+//MyArray<T> MyArray<T>::operator%(const MyArray<T>& obj)
 //{
-//	int tempsize = size + obj.size;
 //
 //	int count = 0, countsize = 0, key = 0;
 //
-//	MyArray<T>* temp = nullptr;
-//
-//	temp = new MyArray<T>(tempsize);
+//	MyArray<T> temp = MyArray<T>(size + obj.size);
 //
 //	for (size_t i = 0; i < size; i++)
 //	{
@@ -316,7 +281,7 @@
 //
 //				for (size_t k = 0; k < countsize; k++)
 //				{
-//					if (array[i] == (*temp)[k])
+//					if (array[i] == temp.array[k])
 //					{
 //						key++;
 //					}
@@ -324,7 +289,7 @@
 //
 //				if (key == 0)
 //				{
-//					(*temp)[countsize] = array[i];
+//					temp.array[countsize] = array[i];
 //					countsize++;
 //				}
 //			}
@@ -347,7 +312,7 @@
 //			{
 //				for (size_t k = 0; k < countsize; k++)
 //				{
-//					if (obj.array[i] == (*temp)[k])
+//					if (obj.array[i] == temp.array[k])
 //					{
 //						key++;
 //					}
@@ -355,7 +320,7 @@
 //
 //				if (key == 0)
 //				{
-//					(*temp)[countsize] = obj.array[i];
+//					temp.array[countsize] = obj.array[i];
 //					countsize++;
 //				}
 //			}
@@ -365,18 +330,13 @@
 //		key = 0;
 //	}
 //
-//
-//	MyArray<T>* result = nullptr;
-//
-//	result = new MyArray<T>(countsize);
-//
-//	//получили массив с уникальными элементами
+//	MyArray<T> result = MyArray<T>(countsize);
 //	for (size_t i = 0; i < countsize; i++)
 //	{
-//		(*result)[i] = (*temp)[i];
+//		result.array[i] = temp.array[i];
 //	}
 //
-//	return *result;
+//	return result;
 //}
 //
 //template<class T>
@@ -405,37 +365,66 @@
 //template<class T>
 //void MyArray<T>::FillArrayNoSrand()
 //{
-//	//for (size_t i = 0; i < size; i++)
-//	//{
-//	//	//array[i] = rand() % 10;
-//
-//	//	if (typeid(T).name() == (string)"int")
-//	//		array[i] = rand() % 100;
-//	//	if (typeid(T).name() == (string)"float")
-//	//		array[i] = (rand() % 1000) / 10.;
-//	//}
-//
-//	if (sizeof(T) == sizeof(int))
+//	for (size_t i = 0; i < size; i++)
 //	{
-//		for (size_t i = 0; i < size; i++)
-//		{
-//			array[i] = rand() % 10;
-//		}
-//	}
-//
-//	else if (sizeof(T) == sizeof(double) || sizeof(T) == sizeof(float))
-//	{
-//		for (size_t i = 0; i < size; i++)
-//		{
-//			array[i] = rand() % 10 * 1.1;
-//		}
-//	}
-//
-//	else if (sizeof(T) == sizeof(char))
-//	{
-//		for (size_t i = 0; i < size; i++)
-//		{
+//		if (typeid(T).name() == (string)"int")
+//			array[i] = rand() % 100;
+//		if (typeid(T).name() == (string)"float" || typeid(T).name() == (string)"double")
+//			array[i] = (rand() % 1000) / 10.;
+//		if (typeid(T).name() == (string)"char")
 //			array[i] = ('a' + rand() % ('z' - 'a'));
-//		}
 //	}
+//}
+//
+////дружественная функция перегрузка оператора + (int + Array) добавляет значение в начало массива
+//
+//template<class T>
+//MyArray<T> operator+(T n, const MyArray<T>& obj);
+//
+////дружественная функция перегрузка cout
+//template<class T>
+//ostream& operator << (ostream& out, const MyArray<T>& obj);
+//
+////дружественная функция перегрузка cin
+//template<class T>
+//istream& operator >> (istream& in, const MyArray<T>& obj);
+//
+//template<class T>
+//MyArray<T> operator+(T n, const MyArray<T>& obj)
+//{
+//	MyArray<T> temp(obj.size + 1);
+//	temp.array[0] = n;
+//
+//	for (size_t i = 0; i < obj.size; i++)
+//	{
+//		temp.array[i + 1] = obj.array[i];
+//	}
+//
+//	return temp;
+//}
+//
+//template<class T>
+//ostream& operator<<(ostream& out, const MyArray<T>& obj)
+//{
+//	for (size_t i = 0; i < obj.size; i++)
+//	{
+//		out << obj.array[i] << " ";
+//	}
+//
+//	out << endl;
+//
+//	return out;
+//}
+//
+//template<class T>
+//istream& operator>>(istream& in, const MyArray<T>& obj)
+//{
+//	cout << "Введите значения для нового массива количеством " << obj.size << " элементов: ";
+//
+//	for (size_t i = 0; i < obj.size; i++)
+//	{
+//		in >> obj.array[i];
+//	}
+//
+//	return in;
 //}

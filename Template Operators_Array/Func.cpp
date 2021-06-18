@@ -1,11 +1,10 @@
-﻿//для массива int (код без шаблона)
-
-//#include "Func.h"
+﻿//#include "Func.h"
 //
 //
-//MyArray operator+(int n, const MyArray& obj)
+//template<class T>
+//MyArray<T> operator+(T n, const MyArray<T>& obj)
 //{
-//	MyArray temp(obj.size + 1);
+//	MyArray<T> temp(obj.size + 1);
 //	temp.array[0] = n;
 //
 //	for (size_t i = 0; i < obj.size; i++)
@@ -16,8 +15,8 @@
 //	return temp;
 //}
 //
-//
-//ostream& operator<<(ostream& out, const MyArray& obj)
+//template<class T>
+//ostream& operator<<(ostream& out, const MyArray<T>& obj)
 //{
 //	for (size_t i = 0; i < obj.size; i++)
 //	{
@@ -29,7 +28,8 @@
 //	return out;
 //}
 //
-//istream& operator>>(istream& in, const MyArray& obj)
+//template<class T>
+//istream& operator>>(istream& in, const MyArray<T>& obj)
 //{
 //	cout << "Введите значения для нового массива количеством " << obj.size << " элементов: ";
 //
