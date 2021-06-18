@@ -36,7 +36,7 @@ public:
 	//оператор Array + Array
 	MyArray operator + (const MyArray& obj);
 
-	//оператор Array + Array
+	//оператор Array += Array (сумирует поэлементно значения массивов)
 	void operator += (const MyArray& obj);
 
 	//оператор равенства ==
@@ -194,7 +194,8 @@ inline void MyArray<T>::operator+=(const MyArray<T>& obj)
 	else
 	{
 		MyArray<T> temp = MyArray<T>(obj.size);
-
+		
+		
 		for (size_t i = 0; i < size; i++)
 		{
 			temp.array[i] = array[i] + obj.array[i];
@@ -212,8 +213,7 @@ inline void MyArray<T>::operator+=(const MyArray<T>& obj)
 			delete[]array;
 
 		size = obj.size;
-		array = new T (size);
-		
+		array = new T (size);		
 
 		for (size_t i = 0; i < size; i++)
 		{
@@ -655,3 +655,4 @@ private:
 	int size = 0;
 
 };*/
+
