@@ -11,30 +11,50 @@ int main()
 	locale loc(cout.getloc(), new ::numpunct);
 	cout.imbue(loc);
 
-	MyArray a(10);
+	MyArray<int> a(10);
 	a.FillArrayNoSrand();
 	cout << "Массив а: ";
 	a.print();
 
 	cout << "Массив b: ";
-	MyArray b(5);
+	MyArray<int> b(5);
 	b.FillArrayNoSrand();
 	b.print();
 
 	cout << "Массив c: ";
-	MyArray c(10);
+	MyArray<int> c(10);
 	c.FillArrayNoSrand();
 	c.print();
 
 	cout << "Массив d: ";
-	MyArray d(10);
+	MyArray<int> d(10);
 	d.FillArrayNoSrand();
 	d.print();
 
 	cout << "Массив q: ";
-	MyArray q(3);
+	MyArray<int> q(3);
 	q.FillArrayNoSrand();
 	q.print();
+
+	cout << "Массив u: ";
+	MyArray<double> u(10);
+	u.FillArrayNoSrand();
+	u.print();
+
+	cout << "Массив u2: ";
+	MyArray<double> u2(7);
+	u2.FillArrayNoSrand();
+	u2.print();
+
+	cout << "Массив k: ";
+	MyArray<char> k(10);
+	k.FillArrayNoSrand();
+	k.print();
+
+	cout << "Массив q: ";
+	MyArray<char> l(3);
+	l.FillArrayNoSrand();
+	l.print();
 
 	cout << "\n--------------------------------------\n";
 
@@ -76,6 +96,36 @@ int main()
 
 	cout << "\n--------------------------------------\n";
 
+	/*cout << "Создание массива Array u3 = Array u + Array u2 \n";
+	cout << "Массив u: ";
+	u.print();
+
+	cout << "Массив u2: ";
+	u2.print();
+
+	MyArray<double> u3(u.GetSize() + u2.GetSize());
+	u3 = u + u2;
+
+	cout << "Массив u3: ";
+	u3.print();
+
+	cout << "\n--------------------------------------\n";*/
+
+	/*cout << "Создание массива CHAR Array kl = Array k + Array l \n";
+	cout << "Массив k: ";
+	k.print();
+
+	cout << "Массив l: ";
+	l.print();
+
+	MyArray<char> kl(k.GetSize() + l.GetSize());
+	kl = k + l;
+
+	cout << "Массив kl: ";
+	kl.print();
+
+	cout << "\n--------------------------------------\n";*/
+
 
 	cout << "Создание массива Array e = Array a + Array c \n";
 	cout << "Массив а: ";
@@ -84,7 +134,7 @@ int main()
 	cout << "Массив c: ";
 	c.print();
 
-	MyArray e(a.GetSize() + c.GetSize());
+	MyArray<int> e(a.GetSize() + c.GetSize());
 	e = a + c;
 
 	cout << "Массив e: ";
@@ -199,7 +249,7 @@ int main()
 	cout << "Массив b: ";
 	b.print();
 
-	MyArray f(a.GetSize() + b.GetSize());
+	MyArray<int> f(a.GetSize() + b.GetSize());
 	f = a % b;
 
 	cout << "Массив f: ";
@@ -209,7 +259,7 @@ int main()
 
 	cout << "Создаем массив с общими уникальными (неповторяющимися) элементами двух массивов \n";
 
-	MyArray g(20);
+	MyArray<int> g(20);
 	g.FillArrayNoSrand();
 
 	cout << "Массив а: ";
@@ -218,7 +268,7 @@ int main()
 	cout << "Массив g: ";
 	g.print();
 
-	MyArray h(a.GetSize() + g.GetSize());
+	MyArray<int> h(a.GetSize() + g.GetSize());
 	h = a * g;
 
 	cout << "Массив h: ";
@@ -235,7 +285,7 @@ int main()
 
 	cout << "Перегрузка оператора >> \n";
 
-	MyArray x(3);
+	MyArray<int> x(3);
 
 	cin >> x;
 
