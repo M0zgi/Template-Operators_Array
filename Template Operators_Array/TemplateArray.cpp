@@ -1,20 +1,22 @@
-﻿//для массива int (код без шаблона)
-
-//#include "Array.h"
+﻿////для массива int (код без шаблона)
 //
-//MyArray::MyArray(int _size)
+//template<class T>
+//MyArray<T>::MyArray(int s)
 //{
-//	if (_size > 0)
+//	if (s > 0)
 //	{
-//		size = _size;
-//		array = new int[size];
+//		size = s;
+//		array = new T[size];
 //	}
 //}
 //
-//MyArray::MyArray(const MyArray& obj)
+//
+//template<class T>
+//inline MyArray<T>::MyArray(const MyArray<T>& obj)
 //{
 //	size = obj.size;
-//	array = new int[size];
+//
+//	array = new T[size];
 //
 //	for (size_t i = 0; i < size; i++)
 //	{
@@ -22,7 +24,91 @@
 //	}
 //}
 //
-//bool MyArray::operator==(const MyArray& obj)
+//template<class T>
+//MyArray<T>& MyArray<T>::operator=(const MyArray<T>& obj)
+//{
+//	if (this == &obj)
+//	{
+//		return *this;
+//	}
+//
+//	if (array != nullptr)
+//	{
+//		delete[] array;
+//	}
+//
+//	size = obj.size;
+//
+//	array = new T[size];
+//
+//	for (size_t i = 0; i < size; i++)
+//	{
+//		array[i] = obj.array[i];
+//	}
+//
+//	return *this;
+//}
+//
+//template<class T>
+//MyArray<T> MyArray<T>::operator+(T n)
+//{
+//	/*int *temp = new int[size + 1];
+//
+//	for (size_t i = 0; i < size; i++)
+//	{
+//		temp[i] = array[i];
+//	}
+//
+//	temp[size] = n;
+//
+//	delete[]array;
+//
+//	size++;
+//
+//	array = temp;
+//
+//	return *this;*/
+//
+//	int tempsize = size + 1;
+//
+//	MyArray<T>* temp = nullptr;
+//
+//	temp = new MyArray<T>(tempsize);
+//
+//	for (size_t i = 0; i < size; i++)
+//	{
+//		(*temp)[i] = array[i];
+//	}
+//
+//	(*temp)[size] = n;
+//
+//	return *temp;
+//}
+//
+//template<class T>
+//MyArray<T>& MyArray<T>::operator+(const MyArray<T>& obj)
+//{
+//	int tempsize = size + obj.size;
+//
+//	MyArray<T>* temp = nullptr;
+//
+//	temp = new MyArray<T>(tempsize);
+//
+//	for (size_t i = 0; i < size; i++)
+//	{
+//		(*temp)[i] = array[i];
+//	}
+//
+//	for (size_t i = 0; i < obj.size; i++)
+//	{
+//		(*temp)[size + i] = obj.array[i];
+//	}
+//
+//	return *temp;
+//}
+//
+//template<class T>
+//bool MyArray<T>::operator==(const MyArray<T>& obj)
 //{
 //	if (size != obj.size)
 //		return false;
@@ -41,7 +127,8 @@
 //	}
 //}
 //
-//bool MyArray::operator!=(const MyArray& obj)
+//template<class T>
+//bool MyArray<T>::operator!=(const MyArray<T>& obj)
 //{
 //	if (size != obj.size)
 //		return true;
@@ -60,7 +147,8 @@
 //	}
 //}
 //
-//bool MyArray::operator>(const MyArray& obj)
+//template<class T>
+//bool MyArray<T>::operator>(const MyArray<T>& obj)
 //{
 //	int sum1 = 0, sum2 = 0;
 //
@@ -73,7 +161,8 @@
 //	return sum1 > sum2;
 //}
 //
-//bool MyArray::operator<(const MyArray& obj)
+//template<class T>
+//bool MyArray<T>::operator<(const MyArray<T>& obj)
 //{
 //	int sum1 = 0, sum2 = 0;
 //
@@ -86,54 +175,44 @@
 //	return sum1 < sum2;
 //}
 //
-//MyArray& MyArray::operator+(const MyArray& obj)
+//template<class T>
+//T MyArray<T>::operator[](int index) const
 //{
-//	int tempsize = size + obj.size;
-//
-//	MyArray* temp = nullptr;
-//
-//	temp = new MyArray(tempsize);
-//
-//	for (size_t i = 0; i < size; i++)
+//	if (index < 0 || index >= size)
 //	{
-//		(*temp)[i] = array[i];
+//		cout << "Указанного индекса нет в массиве: ";
+//
+//		return index;
 //	}
 //
-//	for (size_t i = 0; i < obj.size; i++)
-//	{
-//		(*temp)[size + i] = obj.array[i];
-//	}
-//
-//	return *temp;
+//	else
+//		return array[index];
 //}
 //
-//MyArray& MyArray::operator+(int n)
+//template<class T>
+//T& MyArray<T>::operator[](int index)
 //{
-//	int tempsize = size + 1;
-//
-//	MyArray* temp = nullptr;
-//
-//	temp = new MyArray(tempsize);
-//
-//	for (size_t i = 0; i < size; i++)
+//	if (index < 0 || index >= size)
 //	{
-//		(*temp)[i] = array[i];
+//		cout << "Указанного индекса нет в массиве: ";
+//
+//		return index;
 //	}
 //
-//	(*temp)[size] = n;
-//
-//	return *temp;
+//	else
+//		return array[index];
 //}
 //
-//MyArray& MyArray::operator*(const MyArray& obj)
+//template<class T>
+//MyArray<T>& MyArray<T>::operator*(const MyArray<T>& obj)
 //{
 //	int tempsize = size + obj.size;
 //
 //	int count = 0, countsize = 0, key = 0;
 //
-//	MyArray* temp = nullptr;
+//	MyArray<T>* temp = nullptr;
 //
-//	temp = new MyArray(tempsize);
+//	temp = new MyArray<T>(tempsize);
 //
 //	for (size_t i = 0; i < size; i++)
 //	{
@@ -199,9 +278,9 @@
 //	}
 //
 //
-//	MyArray* result = nullptr;
+//	MyArray<T>* result = nullptr;
 //
-//	result = new MyArray(countsize);
+//	result = new MyArray<T>(countsize);
 //
 //	//получили массив с уникальными элементами
 //	for (size_t i = 0; i < countsize; i++)
@@ -212,15 +291,16 @@
 //	return *result;
 //}
 //
-//MyArray& MyArray::operator%(const MyArray& obj)
+//template<class T>
+//MyArray<T>& MyArray<T>::operator%(const MyArray<T>& obj)
 //{
 //	int tempsize = size + obj.size;
 //
 //	int count = 0, countsize = 0, key = 0;
 //
-//	MyArray* temp = nullptr;
+//	MyArray<T>* temp = nullptr;
 //
-//	temp = new MyArray(tempsize);
+//	temp = new MyArray<T>(tempsize);
 //
 //	for (size_t i = 0; i < size; i++)
 //	{
@@ -286,9 +366,9 @@
 //	}
 //
 //
-//	MyArray* result = nullptr;
+//	MyArray<T>* result = nullptr;
 //
-//	result = new MyArray(countsize);
+//	result = new MyArray<T>(countsize);
 //
 //	//получили массив с уникальными элементами
 //	for (size_t i = 0; i < countsize; i++)
@@ -299,61 +379,20 @@
 //	return *result;
 //}
 //
-//MyArray& MyArray::operator=(const MyArray& obj)
-//{
-//	size = obj.size;
-//
-//	if (array != nullptr)
-//	{
-//		delete[] array;
-//	}
-//
-//	array = new int[size];
-//
-//	for (size_t i = 0; i < size; i++)
-//	{
-//		array[i] = obj.array[i];
-//	}
-//	return *this;
-//}
-//
-//int& MyArray::operator[](int index)
-//{
-//	if (index < 0 || index >= size)
-//	{
-//		cout << "Указанного индекса нет в массиве: ";
-//
-//		return index;
-//	}
-//
-//	else
-//		return array[index];
-//}
-//
-//int MyArray::operator[](int index) const
-//{
-//	if (index < 0 || index >= size)
-//	{
-//		cout << "Указанного индекса нет в массиве: ";
-//
-//		return index;
-//	}
-//
-//	else
-//		return array[index];
-//}
-//
-//int MyArray::GetSize()
+//template<class T>
+//int MyArray<T>::GetSize()
 //{
 //	return size;
 //}
 //
-//MyArray::~MyArray()
+//template<class T>
+//MyArray<T>::~MyArray()
 //{
 //	delete[] array;
 //}
 //
-//void MyArray::print() const
+//template<class T>
+//void MyArray<T>::print() const
 //{
 //	for (size_t i = 0; i < size; i++)
 //	{
@@ -363,10 +402,40 @@
 //	cout << endl;
 //}
 //
-//void MyArray::FillArrayNoSrand()
+//template<class T>
+//void MyArray<T>::FillArrayNoSrand()
 //{
-//	for (size_t i = 0; i < size; i++)
+//	//for (size_t i = 0; i < size; i++)
+//	//{
+//	//	//array[i] = rand() % 10;
+//
+//	//	if (typeid(T).name() == (string)"int")
+//	//		array[i] = rand() % 100;
+//	//	if (typeid(T).name() == (string)"float")
+//	//		array[i] = (rand() % 1000) / 10.;
+//	//}
+//
+//	if (sizeof(T) == sizeof(int))
 //	{
-//		array[i] = rand() % 10;
+//		for (size_t i = 0; i < size; i++)
+//		{
+//			array[i] = rand() % 10;
+//		}
+//	}
+//
+//	else if (sizeof(T) == sizeof(double) || sizeof(T) == sizeof(float))
+//	{
+//		for (size_t i = 0; i < size; i++)
+//		{
+//			array[i] = rand() % 10 * 1.1;
+//		}
+//	}
+//
+//	else if (sizeof(T) == sizeof(char))
+//	{
+//		for (size_t i = 0; i < size; i++)
+//		{
+//			array[i] = ('a' + rand() % ('z' - 'a'));
+//		}
 //	}
 //}
