@@ -1,7 +1,5 @@
 # Template-Operators_Array
 
-
-
 #######################
 
 Disclaimer!!!!
