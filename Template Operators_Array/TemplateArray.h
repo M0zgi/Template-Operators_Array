@@ -203,10 +203,10 @@ inline void MyArray<T>::operator+=(const MyArray<T>& obj)
 			cout << temp.array[i] << " ";
 		}
 		cout << endl;
-		for (size_t i = 0; i < obj.size; i++)
+		for (size_t i = 0; i < obj.size - size; i++)
 		{
 			temp.array[size + i] = obj.array[size + i];
-			cout << temp.array[i] << " ";
+			cout << temp.array[size + i] << " ";
 		}
 		cout << endl;
 		if (array != nullptr)
@@ -220,7 +220,6 @@ inline void MyArray<T>::operator+=(const MyArray<T>& obj)
 			array[i] = temp.array[i];
 			cout << array[i] << " ";
 		}
-
 	}
 	
 }
