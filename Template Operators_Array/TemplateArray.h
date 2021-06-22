@@ -193,8 +193,7 @@ inline void MyArray<T>::operator+=(const MyArray<T>& obj)
 		
 	else
 	{
-		MyArray<T> temp = MyArray<T>(obj.size);
-		
+		MyArray<T> temp = MyArray<T>(obj.size);		
 		
 		for (size_t i = 0; i < size; i++)
 		{
@@ -220,8 +219,7 @@ inline void MyArray<T>::operator+=(const MyArray<T>& obj)
 			array[i] = temp.array[i];
 			cout << array[i] << " ";
 		}
-	}
-	
+	}	
 }
 
 template<class T>
