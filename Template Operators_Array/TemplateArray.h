@@ -213,7 +213,7 @@ inline void MyArray<T>::operator+=(const MyArray<T>& obj)
 			delete[]array;
 
 		size = obj.size;
-		array = new T (size);		
+		array = new T [size];		
 
 		for (size_t i = 0; i < size; i++)
 		{
