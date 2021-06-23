@@ -231,7 +231,6 @@ inline void MyArray<T>::operator-=(const MyArray& obj)
 		{
 			array[i] = array[i] - obj.array[i];
 		}
-
 	}
 
 	else
