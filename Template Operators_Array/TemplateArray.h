@@ -39,6 +39,9 @@ public:
 	//оператор Array += Array (сумирует поэлементно значения массивов)
 	void operator += (const MyArray& obj);
 
+	//оператор Array -= Array (вычитает поэлементно значения массивов)
+	void operator -= (const MyArray& obj);
+
 	//оператор равенства ==
 	bool operator == (const MyArray& obj);
 
@@ -217,6 +220,46 @@ inline void MyArray<T>::operator+=(const MyArray<T>& obj)
 			array[i] = temp.array[i];
 		}
 	}	
+}
+
+template<class T>
+inline void MyArray<T>::operator-=(const MyArray& obj)
+{
+	if (size >= obj.size)
+	{
+		for (size_t i = 0; i < obj.size; i++)
+		{
+			array[i] = array[i] - obj.array[i];
+		}
+
+	}
+
+	else
+	{
+		MyArray<T> temp = MyArray<T>(obj.size);
+
+		for (size_t i = 0; i < size; i++)
+		{
+			temp.array[i] = array[i] - obj.array[i];
+			cout << temp.array[i] << " ";
+		}
+
+		for (size_t i = 0; i < obj.size - size; i++)
+		{
+			temp.array[size + i] = 0 - obj.array[size + i];
+		}
+
+		if (array != nullptr)
+			delete[]array;
+
+		size = obj.size;
+		array = new T[size];
+
+		for (size_t i = 0; i < size; i++)
+		{
+			array[i] = temp.array[i];
+		}
+	}
 }
 
 template<class T>
